@@ -1,5 +1,15 @@
 <script setup>
-    import Button from './components/Button.vue';
+    import Stat from './components/Stat.vue';
+    import CitySelect from './components/CitySelect.vue';
+
+    const data = {
+        label: "Влажность",
+        value: "60%",
+    };
+
+    function getCity(city) {
+        console.log(city);
+    }
 </script>
 
 <template>
@@ -10,11 +20,11 @@
                     <div class="weather__leftpanel">
                     </div>
                     <div class="weather__body">
-                        <Button>
-                            <template #icon>+</template>
-                            Сохранить
-                        </Button>
+                        <Stat :label="data.label" :value="data.value" />
+                        <Stat :="data" />
+                        <Stat :label="data.label" :value="data.value" />
                     </div>
+                    <CitySelect @select-city="getCity" />
                 </div>
             </div>
         </section>
