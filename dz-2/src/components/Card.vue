@@ -18,7 +18,7 @@
 
     function onFlip() {
         if (status !== 'default') return;
-        emit('flip');
+        emit('flip'); 
     }
 
     function onChangeStatus(nextStatus) {
@@ -28,7 +28,7 @@
         if (status === 'default') return 'Перевернуть';
         if (status === 'flip') return '';
         if (status === 'correct') return 'Завершено';
-        if (status === 'incorrect') return 'Ошибка';
+        if (status === 'incorrect') return 'Завершено';
         return '';
     });
 
