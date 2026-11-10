@@ -15,7 +15,15 @@
             return nextStatus === 'correct' || nextStatus === 'incorrect';
         },
     });
-    
+
+    function onFlip() {
+        if (status !== 'default') return;
+        emit('flip');
+    }
+
+    function onChangeStatus(nextStatus) {
+        emit('changeStatus', nextStatus);
+    }
     const statusText = computed(() => {
         if (status === 'default') return 'Перевернуть';
         if (status === 'flip') return '';
@@ -69,7 +77,6 @@
     border-radius: 16px;
     box-shadow: var(--shadow-card);
     transition: box-shadow 0.3s ease-in-out;
-    overflow: hidden;
 }
 .card:hover {
     box-shadow: var(--shadow-card-hover);

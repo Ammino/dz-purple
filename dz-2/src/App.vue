@@ -3,7 +3,21 @@
   import Header from './components/header.vue'
   // import Button from './components/Button.vue'
   import Card from './components/Card.vue'
-  
+
+  const cards = ref([
+    { id: 1, status: 'default' },
+    { id: 2, status: 'flip' },
+    { id: 3, status: 'correct' },
+    { id: 4, status: 'incorrect' },
+  ])
+
+  function flipCard(card) {
+    card.status = 'flip'
+  }
+
+  function changeCardStatus(card, status) {
+    card.status = status
+  }
 </script>
 
 <template>
@@ -15,10 +29,13 @@
   </div> -->
   <div class="game">
     <div class="cardlist">
-      <Card status="default" />
-      <Card status="flip" />
-      <Card status="correct" />
-      <Card status="incorrect" />
+      <Card
+        v-for="card in cards"
+        :key="card.id"
+        :status="card.status"
+        @flip="flipCard(card)"
+        @change-status="changeCardStatus(card, $event)"
+      />
     </div>
   </div>
 </template>
